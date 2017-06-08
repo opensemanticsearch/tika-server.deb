@@ -2,6 +2,8 @@
 
 adduser --system --disabled-password tika
 
-insserv tika
+# start while booting
+update-rc.d tika defaults
 
+# start after installation
 service tika restart
