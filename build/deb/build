@@ -1,7 +1,7 @@
 #/bin/sh
 
 VERSION=`date +%y.%m.%d`
-PACKAGE=tika-server_${VERSION}.deb
+PACKAGE=tika-server.deb_${VERSION}.deb
 DEBIAN_VERSION=stable
 BUILDDIR=/tmp/tika-server-$$.deb
 
