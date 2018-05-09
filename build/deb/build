@@ -17,5 +17,10 @@ cp -a ${BASEDIR}/build/deb/${DEBIAN_VERSION}/* ${BUILDDIR}/
 cp -a ${BASEDIR}/etc ${BUILDDIR}/
 cp -a ${BASEDIR}/usr ${BUILDDIR}/
 
+# set rights
+chown -R root:root ${BUILDDIR}/
+chmod g+r ${BUILDDIR}/usr/share/java/tika-server*
+chmod o+r ${BUILDDIR}/usr/share/java/tika-server*
+
 # Build deb
 dpkg -b ${BUILDDIR} ${PACKAGE}
