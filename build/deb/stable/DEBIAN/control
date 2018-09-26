@@ -1,5 +1,5 @@
 Package: tika-server
-Version: 1.18
+Version: 1.19.1
 Section: misc
 Priority: optional
 Architecture: all
@@ -7,5 +7,5 @@ Depends: daemon(>=0),default-jre-headless(>=0)
 Installed-Size: 100
 Maintainer: Markus Mandalka <debian@mandalka.name>
 Homepage: https://opensemanticsearch.org/
-Description: Tika
+Description: Apache Tika server
  Extracts metadata and text from different file formats.
