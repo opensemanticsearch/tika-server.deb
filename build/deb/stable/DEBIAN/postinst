@@ -2,8 +2,11 @@
 
 adduser --system --disabled-password tika
 
-# start while booting
-update-rc.d tika defaults
+# load our additional service config
+systemctl daemon-reload
 
-# start after installation
-service tika restart
+# start while booting
+systemctl enable tika
+
+# (re)start after installation
+systemctl restart tika

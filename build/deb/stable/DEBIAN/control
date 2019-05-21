@@ -3,7 +3,7 @@ Version: 1.20
 Section: misc
 Priority: optional
 Architecture: all
-Depends: daemon(>=0),default-jre-headless(>=0)
+Depends: default-jre-headless(>=0)
 Installed-Size: 100
 Maintainer: Markus Mandalka <debian@mandalka.name>
 Homepage: https://opensemanticsearch.org/

@@ -1,5 +1,7 @@
 #!/bin/sh
 
-service tika stop
+systemctl disable tika
+
+systemctl stop tika
 
 exit 0
