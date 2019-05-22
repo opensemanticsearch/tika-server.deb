@@ -1,5 +1,5 @@
 Package: tika-server
-Version: 1.20
+Version: 1.21
 Section: misc
 Priority: optional
 Architecture: all
