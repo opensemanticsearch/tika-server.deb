@@ -17,10 +17,40 @@ cp -a ${BASEDIR}/build/deb/${DEBIAN_VERSION}/* ${BUILDDIR}/
 cp -a ${BASEDIR}/etc ${BUILDDIR}/
 cp -a ${BASEDIR}/usr ${BUILDDIR}/
 
+
+#
+# Change Tika default config
+#
+
+# Extract Tika config from JAR
+jar xf ${BUILDDIR}/usr/share/java/tika-server-*.jar org/apache/tika/parser/ocr/TesseractOCRConfig.properties
+
+# Edit config: Increase OCR timeout
+sed -i -e 's/timeout=120/timeout=10000/g' org/apache/tika/parser/ocr/TesseractOCRConfig.properties
+
+# Update Tika JAR: Overwrite config with changed version
+jar uf ${BUILDDIR}/usr/share/java/tika-server-*.jar org/apache/tika/parser/ocr/TesseractOCRConfig.properties
+
+# Delete changed version of extracted config (since archived in JAR by step before)
+rm org/apache/tika/parser/ocr/TesseractOCRConfig.properties
+rmdir org/apache/tika/parser/ocr
+rmdir org/apache/tika/parser
+rmdir org/apache/tika
+rmdir org/apache
+rmdir org
+
+
+#
 # set rights
+#
+
 chown -R root:root ${BUILDDIR}/
 chmod g+r ${BUILDDIR}/usr/share/java/tika-server*
 chmod o+r ${BUILDDIR}/usr/share/java/tika-server*
 
+
+#
 # Build deb
+#
+
 dpkg -b ${BUILDDIR} ${PACKAGE}
