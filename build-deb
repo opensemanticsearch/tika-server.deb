@@ -12,6 +12,8 @@ cp -a DEBIAN ${BUILDDIR}/
 cp -a etc ${BUILDDIR}/
 cp -a usr ${BUILDDIR}/
 
+mkdir -p ${BUILDDIR}/var/cache/tesseract
+
 
 #
 # Change Tika default config
