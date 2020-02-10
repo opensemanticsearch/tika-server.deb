@@ -1,6 +1,11 @@
 #!/bin/sh
 
 adduser --system --disabled-password tika
+groupadd -f tesseract_cache
+usermod -a -G tesseract_cache tika
+
+# rights for OCR cache
+chown tika:tesseract_cache /var/cache/tesseract
 
 # load our additional service config
 systemctl daemon-reload
