@@ -1,6 +1,6 @@
 FROM debian:buster
 
-ENV TIKA_VERSION 1.23
+ENV TIKA_VERSION 1.24
 ENV TIKA_URL https://archive.apache.org/dist/tika/tika-server-$TIKA_VERSION.jar
 
 ENV DEBIAN_FRONTEND noninteractive
