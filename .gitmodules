@@ -1,0 +1,3 @@
+[submodule "tesseract-ocr-cache"]
+	path = tesseract-ocr-cache
+	url = https://github.com/opensemanticsearch/tesseract-ocr-cache.git
