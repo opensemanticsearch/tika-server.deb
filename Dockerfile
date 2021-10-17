@@ -1,7 +1,4 @@
-FROM debian:buster
-
-ENV TIKA_VERSION 1.24
-ENV TIKA_URL https://archive.apache.org/dist/tika/tika-server-$TIKA_VERSION.jar
+FROM debian:bullseye
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -12,6 +9,9 @@ RUN apt-get update && apt-get install --no-install-recommends --yes \
     tesseract-ocr \
     tesseract-ocr-all \
     && apt-get clean -y
+
+ENV TIKA_VERSION 2.1.0
+ENV TIKA_URL https://archive.apache.org/dist/tika/$TIKA_VERSION/tika-server-standard-$TIKA_VERSION.jar
 
 RUN wget -P /usr/share/java $TIKA_URL
 
@@ -27,4 +27,4 @@ RUN chown tika /var/cache/tesseract
 
 USER tika
 
-ENTRYPOINT java -jar /usr/share/java/tika-server-${TIKA_VERSION}.jar -h 0.0.0.0
+ENTRYPOINT java -jar /usr/share/java/tika-server-standard-${TIKA_VERSION}.jar -h 0.0.0.0
