@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <properties>
   <parsers>
+    <parser class="org.apache.tika.parser.DefaultParser">
+      <!-- this is not formally necessary, but prevents loading of unnecessary parser -->
+      <parser-exclude class="org.apache.tika.parser.ocr.TesseractOCRParser"/>
+    </parser>
     <parser class="org.apache.tika.parser.ocr.TesseractOCRParser">
       <params>
         <param name="tesseractPath" type="string">/usr/lib/python3/dist-packages/tesseract_cache</param>
