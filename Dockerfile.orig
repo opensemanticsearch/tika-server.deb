@@ -26,8 +26,6 @@ COPY ./tesseract-ocr-cache/tesseract_fake /usr/lib/python3/dist-packages/tessera
 RUN mkdir /var/cache/tesseract
 RUN chown tika /var/cache/tesseract
 
-COPY etc /etc
-
 USER tika
 
-ENTRYPOINT exec java -jar /usr/share/java/tika-server-standard-${TIKA_VERSION}.jar -h 0.0.0.0
+ENTRYPOINT java -jar /usr/share/java/tika-server-standard-${TIKA_VERSION}.jar -h 0.0.0.0
