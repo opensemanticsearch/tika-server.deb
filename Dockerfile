@@ -14,6 +14,8 @@ ENV TIKA_URL https://archive.apache.org/dist/tika/$TIKA_VERSION/tika-server-stan
 
 ADD $TIKA_URL /usr/share/java/
 
+RUN chmod 755 /usr/share/java/tika-server-standard-$TIKA_VERSION.jar
+
 RUN adduser --system --disabled-password tika
 
 RUN apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
