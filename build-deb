@@ -1,11 +1,11 @@
 #/bin/sh
 
-TIKA_VERSION=2.1.0
-TIKA_URL=https://archive.apache.org/dist/tika/$TIKA_VERSION/tika-server-standard-$TIKA_VERSION.jar
-
 VERSION=`date +%y.%m.%d`
 PACKAGE=tika-server.deb_${VERSION}.deb
 BUILDDIR=/tmp/build-tika-server-$$.deb
+
+# read $TIKA_VERSION and $TIKA_URL from config file tika-version.env
+source tika-version.env
 
 echo "Building ${PACKAGE} in temp directory ${BUILDDIR}"
 
@@ -14,10 +14,15 @@ cp -a DEBIAN ${BUILDDIR}/
 cp -a etc ${BUILDDIR}/
 
 mkdir -p ${BUILDDIR}/var/cache/tesseract
-mkdir -p ${BUILDDIR}/usr/share/java/
 
-# Download Tika
-wget -P ${BUILDDIR}/usr/share/java $TIKA_URL
+# if not yet there, download Tika-server binary release
+if [ ! -f "usr/share/java/tika-server-standard-$TIKA_VERSION.jar" ]; then
+    # Download Tika
+    wget -P usr/share/java/ $TIKA_URL
+fi
+
+mkdir -p ${BUILDDIR}/usr/share/java/
+cp usr/share/java/tika-server-standard-$TIKA_VERSION.jar ${BUILDDIR}/usr/share/java/
 
 # Create version agnostic link
 ln -s tika-server-standard-$TIKA_VERSION.jar ${BUILDDIR}/usr/share/java/tika-server-standard.jar
