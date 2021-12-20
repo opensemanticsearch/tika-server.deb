@@ -4,6 +4,7 @@
     <parser class="org.apache.tika.parser.ocr.TesseractOCRParser">
       <params>
         <param name="tesseractPath" type="string">/usr/lib/python3/dist-packages/tesseract_cache</param>
+        <param name="tessdataPath" type="string">/usr/share/tesseract-ocr/4.00/tessdata</param>
       </params>
     </parser>
   </parsers>
