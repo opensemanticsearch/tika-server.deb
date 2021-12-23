@@ -30,4 +30,4 @@ COPY etc /etc
 
 USER tika
 
-ENTRYPOINT exec java -jar /usr/share/java/tika-server-standard-${TIKA_VERSION}.jar -h 0.0.0.0
+ENTRYPOINT exec java -jar /usr/share/java/tika-server-standard-${TIKA_VERSION}.jar -h 0.0.0.0 ${TIKA_CONFIG:+-c "$TIKA_CONFIG"}

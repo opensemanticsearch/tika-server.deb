@@ -1,3 +1,0 @@
-FROM opensemanticsearch/tika-server
-
-ENTRYPOINT exec java -jar /usr/share/java/tika-server-standard-${TIKA_VERSION}.jar -h 0.0.0.0 -c /etc/tika/tika-config-fakecache.xml
