@@ -7,24 +7,24 @@ RUN apt-get update && apt-get install --no-install-recommends --yes \
     python3 \
     tesseract-ocr \
     tesseract-ocr-all \
-    && apt-get clean -y
+    wget \
+    && apt-get clean -y \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+RUN adduser --system --disabled-password tika
+
+RUN mkdir /var/cache/tesseract \
+    && chown tika /var/cache/tesseract
 
 ENV TIKA_VERSION 2.2.1
 ENV TIKA_URL https://archive.apache.org/dist/tika/$TIKA_VERSION/tika-server-standard-$TIKA_VERSION.jar
 
-ADD $TIKA_URL /usr/share/java/
-
-RUN chmod 755 /usr/share/java/tika-server-standard-$TIKA_VERSION.jar
-
-RUN adduser --system --disabled-password tika
-
-RUN apt-get clean -y && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN wget -P /usr/share/java $TIKA_URL \
+    && chmod 755 /usr/share/java/tika-server-standard-$TIKA_VERSION.jar \
+    && rm -rf /tmp/* /var/tmp/*
 
 COPY ./tesseract-ocr-cache/tesseract_cache /usr/lib/python3/dist-packages/tesseract_cache
 COPY ./tesseract-ocr-cache/tesseract_fake /usr/lib/python3/dist-packages/tesseract_fake
-
-RUN mkdir /var/cache/tesseract
-RUN chown tika /var/cache/tesseract
 
 COPY etc /etc
 
