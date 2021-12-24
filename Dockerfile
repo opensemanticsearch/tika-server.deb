@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install --no-install-recommends --yes \
     tesseract-ocr-all \
     && apt-get clean -y
 
-ENV TIKA_VERSION 2.2.0
+ENV TIKA_VERSION 2.2.1
 ENV TIKA_URL https://archive.apache.org/dist/tika/$TIKA_VERSION/tika-server-standard-$TIKA_VERSION.jar
 
 ADD $TIKA_URL /usr/share/java/
