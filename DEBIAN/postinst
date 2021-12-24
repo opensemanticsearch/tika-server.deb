@@ -13,6 +13,8 @@ systemctl daemon-reload
 
 # start while booting
 systemctl enable tika
+systemctl enable tika-fake-ocr
 
 # (re)start after installation
 systemctl restart tika
+systemctl restart tika-fake-ocr

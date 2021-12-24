@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=tika
 Environment=OMP_THREAD_LIMIT=1
-ExecStart=/usr/bin/java -jar /usr/share/java/tika-server-standard.jar --config /etc/tika/tika-config-cache.xml
+ExecStart=/usr/bin/java -jar /usr/share/java/tika-server-standard.jar --port 9999 --config /etc/tika/tika-config-fakecache.xml
 Restart=always
 
 [Install]
