@@ -16,7 +16,7 @@ RUN adduser --system --disabled-password tika
 RUN mkdir /var/cache/tesseract \
     && chown tika /var/cache/tesseract
 
-ENV TIKA_VERSION 2.2.1
+ENV TIKA_VERSION 2.3.0
 ENV TIKA_URL https://archive.apache.org/dist/tika/$TIKA_VERSION/tika-server-standard-$TIKA_VERSION.jar
 
 RUN wget -P /usr/share/java $TIKA_URL \
